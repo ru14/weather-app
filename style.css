@@ -52,7 +52,9 @@ body {
 }
 .weekdays{
   display: flex;
+  justify-content: left;
   flex-direction: row;
+  align-items:center;
   width: 150px;
   height: 150px;
   border: 1px solid blue;
