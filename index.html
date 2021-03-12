@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    
+    <div class="header">
+        <h1>Weather Dashboard</h1>
+        <p>A website created by Raginee.</p>
+    </div>
+    <div class="row">
+        <div class="side">
+            <h2>Search for city</h2>
+            <div class="search-wrap">
+                <div class="search-box">
+                    <input type="text" placeholder="Search.." name="city name">
+                    <div class="btn">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div>LONDON</div><br>
+            <div>canada</div><br>
+            <div >Italy</div>
+        </div>
+        <div class="main">
+            <div class="City" style="height:200px;">Image</div>
+            <h2>City Name</h2>
+            <br>
+            <div class="w5-row">
+                <div class="w3-third w3-center">
+                    <h3>MON</h3>
+                    <!-- <img src="img_weather_sun.jpg" alt="sun"> -->
+                </div>
+                <div class="w3-third w3-center">
+                    <h3>TUE</h3>
+                    <!-- <img src="img_weather_cloud.jpg" alt="cloud"> -->
+                </div>
+                <div class="w3-third w3-center w3-margin-bottom">
+                    <h3>WED</h3>
+                    <!-- <img src="img_weather_clouds.jpg" alt="clouds"> -->
+                </div>
+                <div class="w3-third w3-center">
+                    <h3>THUS</h3>
+                    <!-- <img src="img_weather_sun.jpg" alt="sun"> -->
+                </div>
+                <div class="w3-third w3-center">
+                    <h3>FRI</h3>
+                    <!-- <img src="img_weather_cloud.jpg" alt="cloud"> -->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>Footer</h2>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
+</body>
+
 </html>
