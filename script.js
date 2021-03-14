@@ -1,25 +1,39 @@
-const api = {
-    key: "f9ca789169d967eac2bc191ca630ca88",
-    baseurl: "https://openweathermap.org/data/2.5",
-}
-const searchBtn = document.querySelector(".btn");
-searchBtn.addEventListener("click", setQuery);
+const searchElement = document.getElementById("searchBox");
+const searchBox = new google.maps.place.searchBox(searchElement)
 
-function setQuery(event) {
-    const searchBox = document.getElementById("searchBox");
-    const newCity = getResult(searchBox.value);
-    console.log(newCity)
 
-}
-function getResult(query) {
-    fetch(`${api.baseurl} weather?q=${query}&units=metric&APPID=${api.key}`)
-    .then(weather => {
-        return weather.json();
-    }).then(displayResults);
-}
-function displayResults(weather) {
-    console.log(weather);
-}
+
+
+
+
+
+
+
+
+
+
+// const api = {
+//     key: "f9ca789169d967eac2bc191ca630ca88",
+//     baseurl: "https://openweathermap.org/data/2.5",
+// }
+// const searchBtn = document.querySelector(".btn");
+// searchBtn.addEventListener("click", setQuery);
+
+// function setQuery(event) {
+//     const searchBox = document.getElementById("searchBox");
+//     const newCity = getResult(searchBox.value);
+//     console.log(newCity)
+
+// }
+// function getResult(query) {
+//     fetch(`${api.baseurl} weather?q=${query}&units=metric&APPID=${api.key}`)
+//     .then(weather => {
+//         return weather.json();
+//     }).then(displayResults);
+// }
+// function displayResults(weather) {
+//     console.log(weather);
+// }
 // fetch(api.baseurl)
 // .then(response =>{
 // return response.json();
