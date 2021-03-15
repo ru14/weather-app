@@ -1,30 +1,23 @@
-const searchElement = document.getElementById("searchBox");
-const searchBox = new google.maps.places.searchBox(searchElement);
-searchBox.addListener("places_changed",()=> {
-    const place = searchBox.getPlaces()[0];
-    if(place == null) return
-    const latitude = place.geometry.location.lat();
-    const longitude = place.geometry.location.lng();
-})
-
-
-
-
-
-
-
-
-
-
-// let map;
-// function initMap() {
-//     console.log("initMap called.");
-//   map = new google.maps.Map(document.getElementById("map"), {
-//     center: { lat: -34.397, lng: 150.644 },
-//     zoom: 8,
-//   });
-
-
+function initMap() {
+    const searchElement = document.getElementById("searchBox");
+    const searchBox = new google.maps.places.SearchBox(searchElement);
+    searchBox.addListener("places_changed", () => {
+        const place = searchBox.getPlaces()[0];
+        if (place == null) return
+        const latitude = place.geometry.location.lat();
+        const longitude = place.geometry.location.lng();
+        const proxy = `https://cors-anywhere.herokuapp.com/`
+        const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=f9ca789169d967eac2bc191ca630ca88`
+        fetch(api)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            });
+    
+    });
+}
 
 // const api = {
 //     key: "f9ca789169d967eac2bc191ca630ca88",
@@ -48,13 +41,6 @@ searchBox.addListener("places_changed",()=> {
 // function displayResults(weather) {
 //     console.log(weather);
 // }
-// fetch(api.baseurl)
-// .then(response =>{
-// return response.json();
-// })
-// .then(data=>{
-//     console.log(data);
-// });
 
 
 
@@ -91,4 +77,3 @@ searchBox.addListener("places_changed",()=> {
 // THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
-// ```
