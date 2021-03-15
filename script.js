@@ -1,27 +1,28 @@
 const searchElement = document.getElementById("searchBox");
-const searchBox = new google.maps.place.searchBox(searchElement);
-searchBox.addListener("place-changed",()=> {
-    const place = searchBox.getPlace()[0];
+const searchBox = new google.maps.places.searchBox(searchElement);
+searchBox.addListener("places_changed",()=> {
+    const place = searchBox.getPlaces()[0];
     if(place == null) return
+    const latitude = place.geometry.location.lat();
+    const longitude = place.geometry.location.lng();
 })
 
-let map;
-function initMap() {
-    console.log("initMap called.");
+
+
+
+
+
+
+
+
+
+// let map;
+// function initMap() {
+//     console.log("initMap called.");
 //   map = new google.maps.Map(document.getElementById("map"), {
 //     center: { lat: -34.397, lng: 150.644 },
 //     zoom: 8,
 //   });
-}
-
-
-
-
-
-
-
-
-
 
 
 
