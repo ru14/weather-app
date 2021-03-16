@@ -18,7 +18,7 @@ function initMap() {
             });
     
     });
-    const icon = new Skycons({color: "#222"});
+    const icon = new Skycons({color: "pink"});
     const todaysDate = document.querySelector("[data-date]");
     const location = document.querySelector("[data-location]");
     const tempEle = document.querySelector("[data-Temp]");
@@ -35,7 +35,18 @@ function initMap() {
     wind.textContent = data.current.wind_speed
     uVindex.textContent = data.current.uvi
     summary.textContent = data.current.weather[0].description
-    icon.set("icon", data.current.weather[0].icon);
+    console.log(data.current.weather[0].main);
+
+    switch (data.current.weather[0].main) {
+        case "Clouds":
+        icon.add("Icon", Skycons.CLOUDY);
+            // icon.set("Icon", Skycons.CLOUDY);
+            break;
+    
+        default:
+            break;
+    }
+    // icon.set("icon", data.current.weather[0].icon);
     icon.play();
    }
     
