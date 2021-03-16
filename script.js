@@ -18,14 +18,16 @@ function initMap() {
             });
     
     });
-    const icon = new Skycons({color: "pink"});
+    const icon = new Skycons({color: "black"});
     const todaysDate = document.querySelector("[data-date]");
     const location = document.querySelector("[data-location]");
     const tempEle = document.querySelector("[data-Temp]");
     const humidity = document.querySelector("[data-Humidity]");
     const wind = document.querySelector("[data-Wind]");
     const uVindex = document.querySelector("[data-UVindex]");
-    const summary = document.querySelector("[data-summary]")
+    const summary = document.querySelector("[data-summary]");
+icon.add("Icon", "clear_day");
+icon.play();
     
    function setWeatherData(data,place){
     todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
@@ -39,9 +41,11 @@ function initMap() {
 
     switch (data.current.weather[0].main) {
         case "Clouds":
-        icon.add("Icon", Skycons.CLOUDY);
-            // icon.set("Icon", Skycons.CLOUDY);
+        icon.add("Icon", "cloudy");
             break;
+            case "Clear":
+                icon.add("Icon", "clear_night");
+                break;
     
         default:
             break;
