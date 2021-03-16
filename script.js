@@ -14,9 +14,32 @@ function initMap() {
             })
             .then(data => {
                 console.log(data);
+                setWeatherData(data , place.formatted_address)
             });
     
     });
+    const icon = new Skycons({color: "#222"});
+    const todaysDate = document.querySelector("[data-date]");
+    const location = document.querySelector("[data-location]");
+    const tempEle = document.querySelector("[data-Temp]");
+    const humidity = document.querySelector("[data-Humidity]");
+    const wind = document.querySelector("[data-Wind]");
+    const uVindex = document.querySelector("[data-UVindex]");
+    const summary = document.querySelector("[data-summary]")
+    
+   function setWeatherData(data,place){
+    todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
+    location.textContent = place
+    tempEle.textContent = data.current.temp
+    humidity.textContent = data.current.humidity
+    wind.textContent = data.current.wind_speed
+    uVindex.textContent = data.current.uvi
+    summary.textContent = data.current.weather[0].description
+    icon.set("icon", data.current.weather[0].icon);
+    icon.play();
+   }
+    
+
 }
 
 

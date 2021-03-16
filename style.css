@@ -45,9 +45,10 @@ body {
     padding: 20px;
 }
 .general-info{
+    background-color: rgb(78, 172, 231);
     width: 100%;
   height: 220px;
-  border: 1px solid blue;
+  border: 1px solid rgb(27, 148, 223)e;
 }
 .imageCity {
     background-color: #aaa;
