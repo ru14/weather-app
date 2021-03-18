@@ -24,40 +24,43 @@
                     <input id="searchBox" type="text" placeholder="Enter LOcation" name="city name">
                 </div>
             </div>
-            <div class="city">LONDON</div>
-            <div class="city">canada</div>
-            <div class="city">Italy</div>
-            <div class="city">LONDON</div>
-            <div class="city">canada</div>
-            <div class="city">LONDON</div>
-            <div class="city">canada</div>
-            <div class="city">LONDON</div>
+            <div class="city">Resent Search</div>
+            <div class="city">Resent Search</div>
+            <div class="city">Resent Search</div>
+            <div class="city">Resent Search</div>
+            <div class="city">Resent Search</div>
+            <div class="city">Resent Search</div>
+            <div class="city">Resent Search</div>
+            <div class="city">Resent Search</div>
         </div>
         <div class="main">
             <div class="content-box">
                 <div class="imageCity" style="height:200px;">Image</div>
                 <div class="general-info">
+                    <div class="header-icon">
+                        <div class="icon-container">
+                            <canvas id="Icon" width="75" height="75"></canvas>
+                        </div>
+                    </div><br>
                     <div class="status" data-location>Location</div>
                     <div class="summary" data-summary>Summary</div>
                     <div data-date>20/03/2021</div>
-                    <!-- <p id="Icon">Icon</p> -->
-                    <canvas id="Icon" width="128" height="128"></canvas>
                     <div class="detail-section">
                         <div class="detail">
                             <div class="title">Temperature</div>
                             <div class="value" data-Temp>TBD</div>
                         </div>
                         <div class="detail">
-                            <div class="title">Humidity</div>
+                            <div class="title bordered">Humidity</div>
                             <div class="value" data-Humidity>TBD</div>
                         </div>
                         <div class="detail">
-                            <div class="title">Wind-Speed</div>
-                            <div class="value"data-Wind>TBD</div>
+                            <div class="title bordered">Wind-Speed</div>
+                            <div class="value" data-Wind>TBD</div>
                         </div>
                         <div class="detail">
                             <div class="title">UV-index</div>
-                            <div class="value"data-UVindex>TBD</div>
+                            <div class="value" data-UVindex>TBD</div>
                         </div>
                     </div>
                 </div>
@@ -67,23 +70,58 @@
 
             <div class="workdays">
                 <div class="weekdays">
-                    <h3>MON</h3>
+                    <h3>MONDAY</h3>
+                    <div class="detail">
+                        <div class="title">Temperature</div>
+                        <div class="value" data-MonTemp>TBD</div>
+                    </div>
+                    <div class="icon-container">
+                        <canvas id="Icon" width="75" height="75"></canvas>
+                    </div>
                     <!-- <img src="img_weather_sun.jpg" alt="sun"> -->
                 </div>
                 <div class="weekdays">
-                    <h3>TUE</h3>
+                    <h3>TUESDAY</h3>
+                    <div class="detail">
+                        <div class="title">Temperature</div>
+                        <div class="value" data-TueTemp>TBD</div>
+                    </div>
+                    <div class="icon-container">
+                        <canvas id="Icon" width="75" height="75"></canvas>
+                    </div>
                     <!-- <img src="img_weather_cloud.jpg" alt="cloud"> -->
                 </div>
                 <div class="weekdays">
-                    <h3>WED</h3>
+                    <h3>WEDNESDAY</h3>
+                    <div class="detail">
+                        <div class="title">Temperature</div>
+                        <div class="value" data-WedTemp>TBD</div>
+                    </div>
+                    <div class="icon-container">
+                        <canvas id="Icon" width="75" height="75"></canvas>
+                    </div>
                     <!-- <img src="img_weather_clouds.jpg" alt="clouds"> -->
                 </div>
                 <div class="weekdays">
-                    <h3>THUS</h3>
+                    <h3>THUSDAY</h3>
+                    <div class="detail">
+                        <div class="title">Temperature</div>
+                        <div class="value" data-ThusTemp>TBD</div>
+                    </div>
+                    <div class="icon-container">
+                        <canvas id="Icon" width="75" height="75"></canvas>
+                    </div>
                     <!-- <img src="img_weather_sun.jpg" alt="sun"> -->
                 </div>
                 <div class="weekdays">
-                    <h3>FRI</h3>
+                    <h3>FRIDAY</h3>
+                    <div class="detail">
+                        <div class="title">Temperature</div>
+                        <div class="value" data-FriTemp>TBD</div>
+                    </div>
+                    <div class="icon-container">
+                        <canvas id="Icon" width="75" height="75"></canvas>
+                    </div>
                     <!-- <img src="img_weather_cloud.jpg" alt="cloud"> -->
                 </div>
 
@@ -94,8 +132,9 @@
     <div class="footer">
         <h2>Footer</h2>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js" 
-    integrity="sha512-ChQiOC9OBUvQ75KLv3+YRxCQLV1bSWnGfcSdaP1v3iu6XSkmge+eXCu3lcV+O+Uvdjb+LGMZd/KAvV4rkEfbzw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"
+        integrity="sha512-ChQiOC9OBUvQ75KLv3+YRxCQLV1bSWnGfcSdaP1v3iu6XSkmge+eXCu3lcV+O+Uvdjb+LGMZd/KAvV4rkEfbzw=="
+        crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

@@ -14,11 +14,11 @@ function initMap() {
             })
             .then(data => {
                 console.log(data);
-                setWeatherData(data , place.formatted_address)
+                setWeatherData(data, place.formatted_address)
             });
-    
+
     });
-    const icon = new Skycons({color: "black"});
+    const icon = new Skycons({ color: "black" });
     const todaysDate = document.querySelector("[data-date]");
     const location = document.querySelector("[data-location]");
     const tempEle = document.querySelector("[data-Temp]");
@@ -26,36 +26,75 @@ function initMap() {
     const wind = document.querySelector("[data-Wind]");
     const uVindex = document.querySelector("[data-UVindex]");
     const summary = document.querySelector("[data-summary]");
-icon.add("Icon", "clear_day");
-icon.play();
     
-   function setWeatherData(data,place){
-    todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
-    location.textContent = place
-    tempEle.textContent = data.current.temp
-    humidity.textContent = data.current.humidity
-    wind.textContent = data.current.wind_speed
-    uVindex.textContent = data.current.uvi
-    summary.textContent = data.current.weather[0].description
-    console.log(data.current.weather[0].main);
+    icon.add("Icon", "clear_day");
+    icon.play();
 
-    switch (data.current.weather[0].main) {
-        case "Clouds":
-        icon.add("Icon", "cloudy");
-            break;
+    function setWeatherData(data, place) {
+        todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
+        location.textContent = place
+        tempEle.textContent = data.current.temp
+        humidity.textContent = data.current.humidity
+        wind.textContent = data.current.wind_speed
+        uVindex.textContent = data.current.uvi
+        summary.textContent = data.current.weather[0].description
+        console.log(data.current.weather[0].main);
+       
+
+        // let resentSearch_stringyfy = JSON.stringify(data,);
+        // let resentSearch = localStorage.setItem("resentSearch", resentSearch_stringyfy);
+        // var savedValue = JSON.parse(localStorage.getItem("resentSearch"));
+        let resentSearch = localStorage.setItem("resentSearch", place);
+        var savedValue = localStorage.getItem("resentSearch");
+        if( savedValue ){
+            document.querySelector(".city").innerHTML = savedValue;
+        if(!savedValue.getItem){
+            populateStorage();
+        }
+        }
+        
+        console.log(savedValue);
+
+        switch (data.current.weather[0].main) {
+            case "Clouds":
+                icon.add("Icon", "cloudy");
+                break;
             case "Clear":
                 icon.add("Icon", "clear_night");
                 break;
-    
-        default:
-            break;
-    }
-    // icon.set("icon", data.current.weather[0].icon);
-    icon.play();
-   }
-    
+                case "Clear":
+                icon.add("Icon", "clear_night");
+                break;
+                case "Clear":
+                icon.add("Icon", "clear_night");
+                break;
 
+            default:
+                break;
+        }
+        // icon.set("icon", data.current.weather[0].icon);
+        icon.play();
+    }
+    
 }
+//        // populate saved values
+//        var savedValue = localStorage.getItem(data,place);
+//     //    if (savedValue !== null){
+//     //        elements[item].value = savedValue;
+//            console.log(localStorage)
+//        }
+//    }
+
+//    function clickActionListener(element, e){
+//        e.preventDefault();
+//        var startTime = element.dataset.startTime;
+//        var inputValue = element.parentElement.previousElementSibling.value;
+//        if(inputValue.trim() != ""){
+//            localStorage.setItem(startTime, inputValue);
+//        }    
+//    }
+
+
 
 
 
