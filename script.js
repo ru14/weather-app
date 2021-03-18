@@ -1,13 +1,17 @@
+
 function initMap() {
     const searchElement = document.getElementById("searchBox");
-    const searchBox = new google.maps.places.SearchBox(searchElement);
+    let searchBox = new google.maps.places.SearchBox(searchElement);
     searchBox.addListener("places_changed", () => {
         const place = searchBox.getPlaces()[0];
+
         if (place == null) return
         const latitude = place.geometry.location.lat();
         const longitude = place.geometry.location.lng();
         const proxy = `https://cors-anywhere.herokuapp.com/`
         const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=f9ca789169d967eac2bc191ca630ca88`
+
+
         fetch(api)
             .then(response => {
                 return response.json();
@@ -15,10 +19,15 @@ function initMap() {
             .then(data => {
                 console.log(data);
                 setWeatherData(data, place.formatted_address)
+                console.log(data);
             });
-
+        // let icon = `http://openweathermap.org/img/wn/` + data.weather[0].icon + `.png`;
+        // console.log(icon);
     });
-    const icon = new Skycons({ color: "black" });
+
+
+
+    // const icon = new Skycons({ color: "black" });
     const todaysDate = document.querySelector("[data-date]");
     const location = document.querySelector("[data-location]");
     const tempEle = document.querySelector("[data-Temp]");
@@ -26,9 +35,9 @@ function initMap() {
     const wind = document.querySelector("[data-Wind]");
     const uVindex = document.querySelector("[data-UVindex]");
     const summary = document.querySelector("[data-summary]");
-    
-    icon.add("Icon", "clear_day");
-    icon.play();
+
+    // icon.add("Icon", "clear_day");
+    // icon.play();
 
     function setWeatherData(data, place) {
         todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
@@ -39,43 +48,57 @@ function initMap() {
         uVindex.textContent = data.current.uvi
         summary.textContent = data.current.weather[0].description
         console.log(data.current.weather[0].main);
-       
+
+
 
         // let resentSearch_stringyfy = JSON.stringify(data,);
         // let resentSearch = localStorage.setItem("resentSearch", resentSearch_stringyfy);
         // var savedValue = JSON.parse(localStorage.getItem("resentSearch"));
-        let resentSearch = localStorage.setItem("resentSearch", place);
+
+
+
+
         var savedValue = localStorage.getItem("resentSearch");
-        if( savedValue ){
-            document.querySelector(".city").innerHTML = savedValue;
-        if(!savedValue.getItem){
-            populateStorage();
+        if (savedValue !== null) {
+            localStorage.setItem("resentSearch1", savedValue)
         }
-        }
-        
-        console.log(savedValue);
+        let resentSearch = localStorage.setItem("resentSearch", place);
 
-        switch (data.current.weather[0].main) {
-            case "Clouds":
-                icon.add("Icon", "cloudy");
-                break;
-            case "Clear":
-                icon.add("Icon", "clear_night");
-                break;
-                case "Clear":
-                icon.add("Icon", "clear_night");
-                break;
-                case "Clear":
-                icon.add("Icon", "clear_night");
-                break;
 
-            default:
-                break;
+
+
+        if (savedValue) {
+            let newCity = document.querySelector(".city").innerHTML = savedValue;
+           
         }
-        // icon.set("icon", data.current.weather[0].icon);
-        icon.play();
+
+        // console.log(savedValue);
+
+        // switch (data.current.weather[0].main) {
+        //     case "Clouds":
+        //         icon.add("Icon", "cloudy");
+        //         break;
+        //     case "Clear":
+        //         icon.add("Icon", "clear_night");
+        //         break;
+        //         case "Clear":
+        //         icon.add("Icon", "clear_night");
+        //         break;
+        //         case "Clear":
+        //         icon.add("Icon", "clear_night");
+        //         break;
+
+        //     default:
+        //         break;
+        // }
+        // // icon.set("icon", data.current.weather[0].icon);
+        // icon.play();
     }
-    
+
+}
+
+function city(){
+    newCity.innerHTML = searchElement
 }
 //        // populate saved values
 //        var savedValue = localStorage.getItem(data,place);
