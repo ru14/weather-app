@@ -31,13 +31,15 @@ var initMap = function() {
 for(i=(recentSearches.length-1);i>=(recentSearches.length-9);i--){
     document.querySelector("#recentSearches").innerHTML+=
     `<div class="city">
-   ${recentSearches[i]}
+   ${recentSearches[i].formatted_address}
     </div>`;
 }
 let searchButtons = document.querySelectorAll(".city")
 
-for (button of searchButtons){
-    button.addEventListenerz
+for (i=0;i<searchButtons.length;i++){
+    button.addEventListener("click", function(e){
+        setDailyWeatherData(recentSearches[i], e.target.value)
+    })
 }
 
 // const icon = new Skycons({ color: "black" });
