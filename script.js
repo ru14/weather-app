@@ -36,11 +36,11 @@ for(i=(recentSearches.length-1);i>=(recentSearches.length-9);i--){
 }
 let searchButtons = document.querySelectorAll(".city")
 
-for (i=0;i<searchButtons.length;i++){
-    button.addEventListener("click", function(e){
-        setDailyWeatherData(recentSearches[i], e.target.value)
-    })
-}
+// for (i=0;i<searchButtons.length;i++){
+//     button.addEventListener("click", function(e){
+//         setDailyWeatherData(recentSearches[i], e.target.value)
+//     })
+// }
 
 ;
 const todaysDate = document.querySelector("[data-date]");
@@ -66,10 +66,10 @@ const humFri = document.querySelector("[data-FriHumidity]");
 
 function setWeatherData(data, place) {
     todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
-    location2.textContent = place
-    tempEle.textContent = data.current.temp
-    humidity.textContent = data.current.humidity
-    wind.textContent = data.current.wind_speed
+    location2.textContent = place;
+    tempEle.textContent = Math.floor(data.current.temp);
+    humidity.textContent = data.current.humidity;
+    wind.textContent = data.current.wind_speed;
     uVindex.textContent = data.current.uvi
     summary.textContent = data.current.weather[0].description
 
