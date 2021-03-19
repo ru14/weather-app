@@ -1,5 +1,5 @@
 let recentSearches = JSON.parse(localStorage.getItem("searches")) || [];
-
+// inintmap to find pooulat search and get long & lat
 var initMap = function() {
     let searchElement = document.getElementById("searchBox");
     let searchBox = new google.maps.places.SearchBox(searchElement);
@@ -11,14 +11,14 @@ var initMap = function() {
         const longitude = place.geometry.location.lng();
         const proxy = `https://cors-anywhere.herokuapp.com/`
         const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=f9ca789169d967eac2bc191ca630ca88`
-
+         
 
         fetch(api)
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setWeatherData(data, place.formatted_address,);
                 recentSearches.push(place.formatted_address);
                 localStorage.setItem("searches",JSON.stringify(recentSearches))
@@ -27,11 +27,11 @@ var initMap = function() {
             });
     });
 }
-
+// to populate the resent search
 for(i=(recentSearches.length-1);i>=(recentSearches.length-9);i--){
     document.querySelector("#recentSearches").innerHTML+=
     `<div class="city">
-   ${recentSearches[i].formatted_address}
+   ${recentSearches[i]}
     </div>`;
 }
 let searchButtons = document.querySelectorAll(".city")
@@ -42,7 +42,7 @@ for (i=0;i<searchButtons.length;i++){
     })
 }
 
-// const icon = new Skycons({ color: "black" });
+;
 const todaysDate = document.querySelector("[data-date]");
 const location2 = document.querySelector("[data-location]");
 const tempEle = document.querySelector("[data-Temp]");
@@ -52,7 +52,7 @@ const uVindex = document.querySelector("[data-UVindex]");
 const summary = document.querySelector("[data-summary]");
 const tempMon = document.querySelector("[data-MonTemp]");
 const humMon = document.querySelector("[data-MonHumidity]");
-
+// weekday 
 const tempTue = document.querySelector("[data-TueTemp]");
 const humTue = document.querySelector("[data-TueHumidity]");
 const tempWed = document.querySelector("[data-WedTemp]");
@@ -62,8 +62,7 @@ const humThus = document.querySelector("[data-ThusHumidity]");
 const tempFri = document.querySelector("[data-FriTemp]");
 const humFri = document.querySelector("[data-FriHumidity]");
 
-// icon.add("Icon", "clear_day");
-// icon.play();
+
 
 function setWeatherData(data, place) {
     todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
@@ -92,6 +91,17 @@ function setDailyWeatherData(data, place) {
     humThus.textContent = data.daily[3].humidity
     tempFri.textContent = data.daily[4].temp.max
     humFri.textContent = data.daily[4].humidity
+    let icon = `http://openweathermap.org/img/wn/${ data.daily[0].weather[0].icon}@2x.png`
+               $(".icon").attr("src",icon);
+               let iconM = `http://openweathermap.org/img/wn/${ data.daily[1].weather[0].icon}@2x.png`
+               $(".iconmon").attr("src",iconM);
+            //    console.log("mon="+iconM);
+               let iconTu = `http://openweathermap.org/img/wn/${ data.daily[2].weather[0].icon}@2x.png`
+               $(".icontue").attr("src",iconTu);
+               let iconW = `http://openweathermap.org/img/wn/${ data.daily[3].weather[0].icon}@2x.png`
+               $(".iconthus").attr("src",iconW);
+               let iconTh = `http://openweathermap.org/img/wn/${ data.daily[4].weather[0].icon}@2x.png`
+               $(".iconfri").attr("src",iconTh);
 }
 
 
