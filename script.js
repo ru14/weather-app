@@ -1,46 +1,50 @@
 let recentSearches = JSON.parse(localStorage.getItem("searches")) || [];
 // inintmap to find pooulat search and get long & lat
-var initMap = function() {
+var initMap = function () {
     let searchElement = document.getElementById("searchBox");
     let searchBox = new google.maps.places.SearchBox(searchElement);
+    console.log("changed")
     searchBox.addListener("places_changed", () => {
         const place = searchBox.getPlaces()[0];
-
+        console.log("searching")
         if (place == null) return
         const latitude = place.geometry.location.lat();
         const longitude = place.geometry.location.lng();
         const proxy = `https://cors-anywhere.herokuapp.com/`
-        const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=f9ca789169d967eac2bc191ca630ca88`
-         
+        const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=f9ca789169d967eac2bc191ca630ca88`
+
 
         fetch(api)
             .then(response => {
+                console.log("api response")
                 return response.json();
             })
             .then(data => {
-                // console.log(data);
+                console.log("data retreived");
                 setWeatherData(data, place.formatted_address,);
                 recentSearches.push(place.formatted_address);
-                localStorage.setItem("searches",JSON.stringify(recentSearches))
+                localStorage.setItem("searches", JSON.stringify(recentSearches));
                 console.log(recentSearches);
                 console.log(data);
             });
     });
 }
 // to populate the resent search
-for(i=(recentSearches.length-1);i>=(recentSearches.length-9);i--){
-    document.querySelector("#recentSearches").innerHTML+=
-    `<div class="city">
+for (i = (recentSearches.length - 1); i >= (recentSearches.length - 9); i--) {
+    document.querySelector("#recentSearches").innerHTML +=
+        `<div class="city">
    ${recentSearches[i]}
     </div>`;
 }
 let searchButtons = document.querySelectorAll(".city")
 
-// for (i=0;i<searchButtons.length;i++){
-//     button.addEventListener("click", function(e){
-//         setDailyWeatherData(recentSearches[i], e.target.value)
-//     })
-// }
+for (i = 0; i < searchButtons.length; i++) {
+    searchButtons[i].addEventListener("click", function (e) {
+        console.log(e.target.innerText)
+        document.querySelector("#searchBox").value = e.target.innerText;
+
+  initMap();
+})}
 
 ;
 const todaysDate = document.querySelector("[data-date]");
@@ -65,47 +69,52 @@ const humFri = document.querySelector("[data-FriHumidity]");
 
 
 function setWeatherData(data, place) {
-    todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
+    let time = todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
     location2.textContent = place;
-    tempEle.textContent = Math.floor(data.current.temp);
+    tempEle.textContent = `${Math.floor(data.current.temp)} F / ${Math.floor((data.current.temp-32)*5/9)} C;`
     humidity.textContent = data.current.humidity;
     wind.textContent = data.current.wind_speed;
     uVindex.textContent = data.current.uvi
     summary.textContent = data.current.weather[0].description
 
     // console.log(data.current.weather[0].main);
-   
-    console.log(data.daily.temp);
-   
+    console.log(time)
+    // console.log(data.daily.temp);
+
     setDailyWeatherData(data, place)
 }
 
 function setDailyWeatherData(data, place) {
-    tempMon.textContent =  data.daily[0].temp.max
-    humMon .textContent = data.daily[0].humidity  
+    tempMon.textContent = data.daily[0].temp.max
+    humMon.textContent = data.daily[0].humidity
     tempTue.textContent = data.daily[1].temp.max
-    humTue .textContent = data.daily[1].humidity
+    humTue.textContent = data.daily[1].humidity
     tempWed.textContent = data.daily[2].temp.max
     humWed.textContent = data.daily[2].humidity
     tempThus.textContent = data.daily[3].temp.max
     humThus.textContent = data.daily[3].humidity
     tempFri.textContent = data.daily[4].temp.max
     humFri.textContent = data.daily[4].humidity
-    let icon = `http://openweathermap.org/img/wn/${ data.daily[0].weather[0].icon}@2x.png`
-               $(".icon").attr("src",icon);
-               let iconM = `http://openweathermap.org/img/wn/${ data.daily[1].weather[0].icon}@2x.png`
-               $(".iconmon").attr("src",iconM);
-            //    console.log("mon="+iconM);
-               let iconTu = `http://openweathermap.org/img/wn/${ data.daily[2].weather[0].icon}@2x.png`
-               $(".icontue").attr("src",iconTu);
-               let iconW = `http://openweathermap.org/img/wn/${ data.daily[3].weather[0].icon}@2x.png`
-               $(".iconthus").attr("src",iconW);
-               let iconTh = `http://openweathermap.org/img/wn/${ data.daily[4].weather[0].icon}@2x.png`
-               $(".iconfri").attr("src",iconTh);
+    let icon = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}@2x.png`
+    $(".icon").attr("src", icon);
+    let iconM = `http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`
+    $(".iconmon").attr("src", iconM);
+    //    console.log("mon="+iconM);
+    let iconTu = `http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}@2x.png`
+    $(".icontue").attr("src", iconTu);
+    let iconW = `http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}@2x.png`
+    $(".iconthus").attr("src", iconW);
+    let iconTh = `http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}@2x.png`
+    $(".iconfri").attr("src", iconTh);
 }
 
 
 
+document.querySelectorAll(".faren").forEach(elem=>{
+    elem.addEventListener("click",function(e){
+        WhateverTheElementIs.innerText ="" //grab value of temperature and do mathematic on it to convert
+    })
+    })
 
 
 
