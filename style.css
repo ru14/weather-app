@@ -101,7 +101,11 @@ body {
      content: url("img/day.png");  
    }
    .night{
-    content: url("img/night.png");  
+    content: url("img/night.png"); 
+    opacity: 1.0; 
+   }
+   .bignight{
+       content: url("img/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg");
    }
    .detail .title{
        font-size: 1rem;

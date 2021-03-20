@@ -69,7 +69,7 @@ const humFri = document.querySelector("[data-FriHumidity]");
 
 
 function setWeatherData(data, place) {
-    let time = todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
+    todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
     location2.textContent = place;
     tempEle.textContent = `${Math.floor(data.current.temp)} F / ${Math.floor((data.current.temp-32)*5/9)} C;`
     humidity.textContent = data.current.humidity;
@@ -83,6 +83,9 @@ function setWeatherData(data, place) {
 
     setDailyWeatherData(data, place)
 }
+
+    
+
 
 function setDailyWeatherData(data, place) {
     tempMon.textContent = data.daily[0].temp.max
