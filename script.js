@@ -1,4 +1,5 @@
-let recentSearches = JSON.parse(localStorage.getItem("searches")) || [];
+const localStorageKey = "weather.searches";
+let recentSearches = JSON.parse(localStorage.getItem(localStorageKey)) || [];
 // inintmap to find pooulat search and get long & lat
 var initMap = function () {
     let searchElement = document.getElementById("searchBox");
@@ -10,7 +11,7 @@ var initMap = function () {
         if (place == null) return
         const latitude = place.geometry.location.lat();
         const longitude = place.geometry.location.lng();
-        const proxy = `https://cors-anywhere.herokuapp.com/`
+        // const proxy = `https://cors-anywhere.herokuapp.com/`
         const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=f9ca789169d967eac2bc191ca630ca88`
 
 
@@ -23,7 +24,7 @@ var initMap = function () {
                 console.log("data retreived");
                 setWeatherData(data, place.formatted_address,);
                 recentSearches.push(place.formatted_address);
-                localStorage.setItem("searches", JSON.stringify(recentSearches));
+                localStorage.setItem(localStorageKey, JSON.stringify(recentSearches));
                 console.log(recentSearches);
                 console.log(data);
             });
@@ -78,15 +79,13 @@ function setWeatherData(data, place) {
     summary.textContent = data.current.weather[0].description
 
     // console.log(data.current.weather[0].main);
-    console.log(time)
+    // console.log(time)
     // console.log(data.daily.temp);
 
     setDailyWeatherData(data, place)
 }
 
     
-
-
 function setDailyWeatherData(data, place) {
     tempMon.textContent = data.daily[0].temp.max
     humMon.textContent = data.daily[0].humidity
@@ -113,11 +112,11 @@ function setDailyWeatherData(data, place) {
 
 
 
-document.querySelectorAll(".faren").forEach(elem=>{
-    elem.addEventListener("click",function(e){
-        WhateverTheElementIs.innerText ="" //grab value of temperature and do mathematic on it to convert
-    })
-    })
+// document.querySelectorAll(".faren").forEach(elem=>{
+//     elem.addEventListener("click",function(e){
+//         WhateverTheElementIs.innerText ="" //grab value of temperature and do mathematic on it to convert
+//     })
+//     })
 
 
 

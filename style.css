@@ -26,7 +26,6 @@ body {
 }
 
 .side {
-
     border-right: 1px solid black;
     -ms-flex: 30%;
     flex: 30%;
@@ -41,91 +40,94 @@ body {
     border: 1px solid rgb(70, 70, 80);
     text-align: center;
     padding: 15px;
-
-    
+    overflow-y: auto;
 }
 
 .main {
     -ms-flex: 70%;
     flex: 70%;
     background-color: white;
-    
 }
 
 .general-info {
-   text-align: center;
+    text-align: center;
     background-color: rgb(78, 172, 231);
     width: 100%;
-    height:500px;
+    height: 500px;
     border: 1px solid rgb(27, 148, 223);
 }
-
-.header-icon{
-     width: 100%;
-    background-color: #264992;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+.content{
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.status {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
 }
-.icon-container{
-    background-color: rgb(78, 172, 231);
-    border-radius: 50%;
-    display:inline;
- 
-   }
-   .status{
-       font-size: 2rem;
-       font-weight: bold;
-       margin-top: 20px;
-   }
-   .summary{
+
+.summary {
     font-size: 1.5rem;
     font-weight: normal;
     margin-top: 10px;
-   }
-   .detail-section{
-       display: flex;
-       justify-content: space-between;
-       margin-top: 40px;
-   }
-   .detail{
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       flex-basis: 0;
-       flex-grow: 1;
-       padding: 20px;
-   }
-   .day{
-     content: url("img/day.png");  
-   }
-   .night{
-    content: url("img/night.png"); 
-    opacity: 1.0; 
-   }
-   .bignight{
-       content: url("img/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg");
-   }
-   .bigday{
-       content: url("img/6649503.png");
-   }
-   .detail .title{
-       font-size: 1rem;
-       flex-grow: 1;
-       font-weight: bold;
-   }
-   .detail .value, h2{
-       font-size: 1rem;
-       margin-top: 20px;
-       font-weight: bold;
-   }
-   .detail .bordered{
-       
-       border-left: 1px solid black;
-       border-right: 1px solid black;
-   }
-  
+}
+
+.detail-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.day {
+    background-image: url("img/day.png");
+}
+
+.night {
+    background-image: url("img/night.png");
+    opacity: 1.0;
+}
+
+.bignight {
+    background-image: url("img/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg");
+}
+
+.bigday {
+    background-image: url("img/6649503.png");
+}
+
+.detail .title {
+    font-size: 1rem;
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.detail .value,
+h2 {
+    font-size: 1rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.detail .bordered {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
 
 .imageCity {
     background-color: #aaa;
@@ -155,6 +157,5 @@ body {
 @media screen and (max-width: 700px) {
     .row {
         flex-direction: column;
-
     }
 }
