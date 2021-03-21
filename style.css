@@ -104,11 +104,14 @@ body {
 
 .day {
     background-image: url("img/day.png");
+    background-size: cover;
+    opacity: 0.5;
 }
 
 .night {
     background-image: url("img/night.png");
-    opacity: 1.0;
+    background-size: cover;
+    opacity: 0.5;
 }
 
 .bignight {
@@ -119,6 +122,7 @@ body {
 
 .bigday {
     background-image: url("img/6649503.png");
+    background-size: cover;
 }
 
 .detail .title {
