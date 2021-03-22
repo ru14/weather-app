@@ -4,24 +4,20 @@ let recentSearches = JSON.parse(localStorage.getItem(localStorageKey)) || [];
 var initMap = function () {
     let searchElement = document.getElementById("searchBox");
     let searchBox = new google.maps.places.SearchBox(searchElement);
-    console.log("changed")
+
     searchBox.addListener("places_changed", () => {
         const place = searchBox.getPlaces()[0];
-        console.log("searching")
+
         if (place == null) return
         const latitude = place.geometry.location.lat();
         const longitude = place.geometry.location.lng();
-        // const proxy = `https://cors-anywhere.herokuapp.com/`
         const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=f9ca789169d967eac2bc191ca630ca88`
-
 
         fetch(api)
             .then(response => {
-                console.log("api response")
                 return response.json();
             })
             .then(data => {
-                console.log("data retreived");
                 setWeatherData(data, place.formatted_address,);
                 recentSearches.push(place.formatted_address);
                 localStorage.setItem(localStorageKey, JSON.stringify(recentSearches));
@@ -44,8 +40,9 @@ for (i = 0; i < searchButtons.length; i++) {
         console.log(e.target.innerText)
         document.querySelector("#searchBox").value = e.target.innerText;
 
-  initMap();
-})}
+        initMap();
+    })
+}
 
 ;
 const todaysDate = document.querySelector("[data-date]");
@@ -72,20 +69,35 @@ const humFri = document.querySelector("[data-FriHumidity]");
 function setWeatherData(data, place) {
     todaysDate.textContent = moment.unix(data.current.dt).format('MMMM Do YYYY, h:mm:ss A');
     location2.textContent = place;
-    tempEle.textContent = `${Math.floor(data.current.temp)} F / ${Math.floor((data.current.temp-32)*5/9)} C;`
+    tempEle.textContent = `${Math.floor(data.current.temp)} F / ${Math.floor((data.current.temp - 32) * 5 / 9)} C;`
     humidity.textContent = data.current.humidity;
     wind.textContent = data.current.wind_speed;
     uVindex.textContent = data.current.uvi
     summary.textContent = data.current.weather[0].description
 
-    // console.log(data.current.weather[0].main);
-    // console.log(time)
-    // console.log(data.daily.temp);
+    // // console.log(data.current.weather[0].main);
+    // console.log(todaysDate)
+    // todaysDate.textContent if (A=== AM) {
+
+    //     const morning = document.querySelector("general-info");
+    //     morning.classList.remove("bignight");
+    //     morning.classList.add("bigday");
+
+    let uvIndex = 5
+    if (uvIndex > uVindex.textContent) {
+        // and then do this it is low 
+    }
+
+    if (uvIndex < uVindex.textContent) {
+        // thin it is high then do this
+    }
 
     setDailyWeatherData(data, place)
 }
 
-    
+
+
+
 function setDailyWeatherData(data, place) {
     tempMon.textContent = data.daily[0].temp.max
     humMon.textContent = data.daily[0].humidity

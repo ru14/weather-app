@@ -65,20 +65,13 @@ body {
     position: relative;
     text-align: center;
     color: white;
-  }
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+}
 .status {
     font-size: 2rem;
     font-weight: bold;
     color: #f1f1f1;
     margin-top: 20px;
 }
-
 .summary {
     font-size: 1.5rem;
     color: #f1f1f1;
@@ -86,19 +79,17 @@ body {
     margin-top: 10px;
 }
 
-.detail-section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-}
+
+   
 
 .detail {
     display: flex;
     flex-direction: column;
-    align-items: center;
+  justify-content: last baseline;
     color: #f1f1f1;
     flex-basis: 0;
     flex-grow: 1;
+    overflow-wrap: normal;
     padding: 20px;
 }
 
@@ -111,7 +102,7 @@ body {
 .night {
     background-image: url("img/night.png");
     background-size: cover;
-    opacity: 0.5;
+    
 }
 
 .bignight {
@@ -124,7 +115,17 @@ body {
     background-image: url("img/6649503.png");
     background-size: cover;
 }
+.detail-section {
+    display: flex;
+    justify-content: space-between;
+    position: absolute; 
+    bottom: 0;
+    color: #f1f1f1; 
+    width: 70%;
+    padding: 20px; 
+   padding-bottom: 30px;
 
+}
 .detail .title {
     font-size: 1rem;
     flex-grow: 1;
@@ -132,19 +133,17 @@ body {
     font-weight: bold;
 }
 
-.detail .value,
-h2 {
+.detail .value{
     font-size: 1rem;
     margin-top: 20px;
     color: #f1f1f1;
     font-weight: bold;
 }
-
-.detail .bordered {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+h2 {
+    font-size: 1.5rem;
+    color: #1b1a1a;
+    font-weight: bold;
 }
-
 
 
 
@@ -155,6 +154,10 @@ h2 {
    display:inline;
 
   }
+.workdays {
+    text-align: justify;
+}
+
 .weekdays {
     display: inline-block;
     justify-content: space-between;
@@ -164,6 +167,13 @@ h2 {
     height: 220px;
     border: 1px solid blue;
 }
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+  }
 
 .footer {
     padding: 20px;

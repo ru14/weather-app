@@ -22,7 +22,7 @@
             <div class="search-wrap">
                 <div class="search-box">
                     <input id="searchBox" type="text" placeholder="Enter Location" name="city name">
-                </div>
+                </div><br>
             </div>
             <div id="recentSearches">
 
@@ -33,12 +33,14 @@
             <div class="content-box">
                 <div class="imageCity" style="height:200px;">CityImage</div>
                 <div class="general-info bignight">
+                    
+                    <div class="status" data-location>Location</div><br>
+                    
+                    <div style="color:white" data-date>20/03/2021</div>
                     <div class="icon-container">
                         <img class="icon">
                     </div>
-                    <div class="status" data-location>Location</div>
                     <div class="summary" data-summary>Summary</div>
-                    <div style="color:white" data-date>20/03/2021</div>
                     <div class="detail-section">
                         <div class="detail">
                             <div class="title">Temperature</div>
@@ -54,8 +56,10 @@
                             <div class="value" data-Wind>TBD<span>miles/hr</span></div>
                         </div>
                         <div class="detail">
+                            <div class = "UV-index normal">
                             <div class="title">UV-index</div>
                             <div class="value" data-UVindex>TBD</div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -66,13 +70,13 @@
             <div class="workdays">
                 <div class="weekdays night">
                     <h3>MONDAY</h3>
-                    <div class="detail">
-                        <div class="title">Temperature</div>
-                        <div class="value" data-MonTemp>TDB<span>F</span></div>
+                    <div class="daydetail">
+                        
+                        <div class="dayvalue" data-MonTemp>TDB<span>F</span></div>
                     </div>
-                    <div class="detail">
+                    <div class="daydetail">
                         <div class="title bordered">Humidity</div>
-                        <div class="value" data-MonHumidity>TBD<span>%</span></div>
+                        <div class="dayvalue" data-MonHumidity>TBD<span>%</span></div>
                     </div>
                     <div class="icon-container-day">
                         <img class="icon-mon">
@@ -81,13 +85,13 @@
                 </div>
                 <div class="weekdays night">
                     <h3>TUESDAY</h3>
-                    <div class="detail">
-                        <div class="title">Temperature</div>
-                        <div class="value" data-TueTemp>TBD<span>F</span></div>
+                    <div class="daydetail">
+                       
+                        <div class="dayvalue" data-TueTemp>TBD<span>F</span></div>
                     </div>
-                    <div class="detail">
+                    <div class="daydetail">
                         <div class="title bordered">Humidity</div>
-                        <div class="value" data-TueHumidity>TBD<span>%</span></div>
+                        <div class="dayvalue" data-TueHumidity>TBD<span>%</span></div>
                     </div>
                     <div class="icon-container-days">
                         <img class="icon-tues">
@@ -96,13 +100,13 @@
                 </div>
                 <div class="weekdays night">
                     <h3>WEDNESDAY</h3>
-                    <div class="detail">
-                        <div class="title">Temperature</div>
-                        <div class="value" data-WedTemp>TBD<span>F</span></div>
+                    <div class="daydetail">
+                       
+                        <div class="dayvalue" data-WedTemp>TBD<span>F</span></div>
                     </div>
-                    <div class="detail night">
+                    <div class="daydetail">
                         <div class="title ">Humidity</div>
-                        <div class="value" data-WedHumidity>TBD<span>%</span></div>
+                        <div class="dayvalue" data-WedHumidity>TBD<span>%</span></div>
                     </div>
                     <div class="icon-container-days">
                         <img class="icon-wed">
@@ -111,13 +115,13 @@
                 </div>
                 <div class="weekdays night">
                     <h3>THUSDAY</h3>
-                    <div class="detail">
-                        <div class="title">Temperature</div>
-                        <div class="value" data-ThusTemp>TBD<span>F</span></div>
+                    <div class="daydetail">
+                       
+                        <div class="dayvalue" data-ThusTemp>TBD<span>F</span></div>
                     </div>
-                    <div class="detail">
+                    <div class="daydetail">
                         <div class="title ">Humidity</div>
-                        <div class="value" data-ThusHumidity>TBD<span>%</span></div>
+                        <div class="dayvalue" data-ThusHumidity>TBD<span>%</span></div>
                     </div>
                     <div class="icon-container-days">
                         <img class="icon-thus">
@@ -126,20 +130,20 @@
                 </div>
                 <div class="weekdays night">
                     <h3>FRIDAY</h3>
-                    <div class="detail">
-                        <div class="title">Temperature</div>
-                        <div class="value" data-FriTemp>TBD<span>F</span></div>
+                    <div class="daydetail">
+                       
+                        <div class="dayvalue" data-FriTemp>TBD<span>F</span></div>
                     </div>
-                    <div class="detail">
+                    <div class="daydetail">
                         <div class="title bordered">Humidity</div>
-                        <div class="value" data-FriHumidity>TBD<span>%</span></div>
+                        <div class="dayvalue" data-FriHumidity>TBD<span>%</span></div>
                     </div>
                     <div class="icon-container-days">
                         <img class="icon-fri">
                     </div>
 
                 </div>
-
+                <span class="stretch"></span>
             </div>
         </div>
     </div>
