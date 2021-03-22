@@ -28,11 +28,9 @@ var initMap = function () {
 }
 // to populate the resent search
 for (i = (recentSearches.length - 1); i >= (recentSearches.length - 9); i--) {
-    document.querySelector("#recentSearches").innerHTML +=
-        `<div class="city">
-   ${recentSearches[i]}
-    </div>`;
+    document.querySelector("#recentSearches").innerHTML += `<div class="city">${recentSearches[i]}</div>`;
 }
+
 let searchButtons = document.querySelectorAll(".city")
 
 for (i = 0; i < searchButtons.length; i++) {
@@ -44,7 +42,6 @@ for (i = 0; i < searchButtons.length; i++) {
     })
 }
 
-;
 const todaysDate = document.querySelector("[data-date]");
 const location2 = document.querySelector("[data-location]");
 const tempEle = document.querySelector("[data-Temp]");
@@ -74,23 +71,26 @@ function setWeatherData(data, place) {
     wind.textContent = data.current.wind_speed;
     uVindex.textContent = data.current.uvi
     summary.textContent = data.current.weather[0].description
+    let sunSet = moment(moment.unix(data.current.sunset));
+    let sunRise = moment(moment.unix(data.current.sunrise));
+    let currentTime = moment(moment.unix(data.current.dt));
 
-    // // console.log(data.current.weather[0].main);
-    // console.log(todaysDate)
-    // todaysDate.textContent if (A=== AM) {
-
-    //     const morning = document.querySelector("general-info");
-    //     morning.classList.remove("bignight");
-    //     morning.classList.add("bigday");
-
-    let uvIndex = 5
-    if (uvIndex > uVindex.textContent) {
-        // and then do this it is low 
+    const morning = document.querySelector(".general-info");
+    if (currentTime.isBefore(sunSet) && currentTime.isAfter(sunRise)) {
+        morning.classList.remove("bignight");
+        morning.classList.add("bigday");
+    } else {
+        morning.classList.remove("bigday");
+        morning.classList.add("bignight");
     }
+    // let uvIndex = 5
+    // if (uvIndex > uVindex.textContent) {
+    //     // and then do this it is low 
+    // }
 
-    if (uvIndex < uVindex.textContent) {
-        // thin it is high then do this
-    }
+    // if (uvIndex < uVindex.textContent) {
+    //     // thin it is high then do this
+    // }
 
     setDailyWeatherData(data, place)
 }
