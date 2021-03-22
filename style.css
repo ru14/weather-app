@@ -115,6 +115,16 @@ body {
     background-image: url("img/6649503.png");
     background-size: cover;
 }
+.low:hover{
+    background-color: green;
+}
+.medium:hover{
+background-color:rgb(230, 230, 148);
+
+}
+.high:hover{
+background-color: red;
+}
 .detail-section {
     display: flex;
     justify-content: space-between;
@@ -144,9 +154,16 @@ h2 {
     color: #1b1a1a;
     font-weight: bold;
 }
-
-
-
+.weekdays{
+    color: #f1f1f1;
+    text-align: center;
+}
+.daytemp{
+    font-size: 2.0rem;
+    position: relative;
+    text-align: center;
+    padding: 35px;
+}
 
 .icon-container{
   

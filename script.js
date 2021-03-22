@@ -26,6 +26,16 @@ var initMap = function () {
             });
     });
 }
+
+// document.onload = onPageLoad();
+// function onPageLoad(){
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition((position) => {
+//             console.log("Postion: " + position.coords.latitude + " : " + position.coords.lagitude);
+//         });
+//     }  
+// }
+
 // to populate the resent search
 for (i = (recentSearches.length - 1); i >= (recentSearches.length - 9); i--) {
     document.querySelector("#recentSearches").innerHTML += `<div class="city">${recentSearches[i]}</div>`;
@@ -83,15 +93,23 @@ function setWeatherData(data, place) {
         morning.classList.remove("bigday");
         morning.classList.add("bignight");
     }
-    // let uvIndex = 5
-    // if (uvIndex > uVindex.textContent) {
-    //     // and then do this it is low 
-    // }
-
-    // if (uvIndex < uVindex.textContent) {
-    //     // thin it is high then do this
-    // }
-
+    const uvIndicator = document.querySelector(".UV-index");
+    if (data.current.uvi <= 2) {
+        uvIndicator.classList.add(".low")
+        uvIndicator.classList.remove(".medium")
+        uvIndicator.classList.remove(".high")
+        
+    } else if ( data.current.uvi > 2 && data.current.uvi < 5) {
+        uvIndicator.classList.add(".medium")
+        uvIndicator.classList .remove(".low")
+        uvIndicator.classList.remove(".high")
+        
+    }else if (data.current.uvi > 7) {
+        uvIndicator.classList.add(".high")
+        uvIndicator.classList.remove(".low")
+        uvIndicator.classList.remove(".medium")
+    }
+    
     setDailyWeatherData(data, place)
 }
 
@@ -99,15 +117,15 @@ function setWeatherData(data, place) {
 
 
 function setDailyWeatherData(data, place) {
-    tempMon.textContent = data.daily[0].temp.max
+    tempMon.textContent = `${Math.floor(data.daily[0].temp.max)} F; `
     humMon.textContent = data.daily[0].humidity
-    tempTue.textContent = data.daily[1].temp.max
+    tempTue.textContent = `${Math.floor(data.daily[1].temp.max)} F;`
     humTue.textContent = data.daily[1].humidity
-    tempWed.textContent = data.daily[2].temp.max
+    tempWed.textContent =`${Math.floor(data.daily[2].temp.max)} F;`
     humWed.textContent = data.daily[2].humidity
-    tempThus.textContent = data.daily[3].temp.max
+    tempThus.textContent = `${Math.floor(data.daily[3].temp.max)} F;`
     humThus.textContent = data.daily[3].humidity
-    tempFri.textContent = data.daily[4].temp.max
+    tempFri.textContent =`${Math.floor(data.daily[4].temp.max)} F;`
     humFri.textContent = data.daily[4].humidity
     let icon = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}@2x.png`
     $(".icon").attr("src", icon);
