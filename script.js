@@ -61,6 +61,11 @@ const uVindex = document.querySelector("[data-UVindex]");
 const summary = document.querySelector("[data-summary]");
 const tempMon = document.querySelector("[data-MonTemp]");
 const humMon = document.querySelector("[data-MonHumidity]");
+const dateMon = document.querySelector("[data-mondate]");
+const dateTues = document.querySelector("[data-tuedate]");
+const dateWed = document.querySelector("[data-weddate]");
+const dateThus = document.querySelector("[data-thusdate]");
+const dateFri = document.querySelector("[data-fridate]");
 // weekday 
 const tempTue = document.querySelector("[data-TueTemp]");
 const humTue = document.querySelector("[data-TueHumidity]");
@@ -117,27 +122,34 @@ function setWeatherData(data, place) {
 
 
 function setDailyWeatherData(data, place) {
+    dateMon.textContent = moment.unix(data.daily[0].dt).format('MMMM Do YYYY');
     tempMon.textContent = `${Math.floor(data.daily[0].temp.max)} F; `
     humMon.textContent = data.daily[0].humidity
+    dateTues.textContent = moment.unix(data.daily[1].dt).format('MMMM Do YYYY');
     tempTue.textContent = `${Math.floor(data.daily[1].temp.max)} F;`
     humTue.textContent = data.daily[1].humidity
+    dateWed.textContent = moment.unix(data.daily[2].dt).format('MMMM Do YYYY');
     tempWed.textContent =`${Math.floor(data.daily[2].temp.max)} F;`
     humWed.textContent = data.daily[2].humidity
+    dateThus.textContent = moment.unix(data.daily[3].dt).format('MMMM Do YYYY');
     tempThus.textContent = `${Math.floor(data.daily[3].temp.max)} F;`
     humThus.textContent = data.daily[3].humidity
+    dateFri.textContent = moment.unix(data.daily[4].dt).format('MMMM Do YYYY');
     tempFri.textContent =`${Math.floor(data.daily[4].temp.max)} F;`
     humFri.textContent = data.daily[4].humidity
     let icon = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}@2x.png`
     $(".icon").attr("src", icon);
-    let iconM = `http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`
-    $(".iconmon").attr("src", iconM);
-    //    console.log("mon="+iconM);
-    let iconTu = `http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}@2x.png`
-    $(".icontue").attr("src", iconTu);
-    let iconW = `http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}@2x.png`
-    $(".iconthus").attr("src", iconW);
-    let iconTh = `http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}@2x.png`
-    $(".iconfri").attr("src", iconTh);
+    let iconM = `http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}.png`
+    $(".icon-mon").attr("src", iconM);
+     console.log("mon="+iconM);
+    let iconTu = `http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}.png`
+    $(".icon-tues").attr("src", iconTu);
+    let iconW = `http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}.png`
+    $(".icon-wed").attr("src", iconW);
+    let iconTh = `http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}.png`
+    $(".icon-thus").attr("src", iconTh);
+    let iconFri = `http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}.png`
+    $(".icon-fri").attr("src", iconFri);
 }
 
 
