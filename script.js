@@ -91,30 +91,36 @@ function setWeatherData(data, place) {
     let currentTime = moment(moment.unix(data.current.dt));
 
     const morning = document.querySelector(".general-info");
+    const weekday = document.querySelector(".weekdays")
     if (currentTime.isBefore(sunSet) && currentTime.isAfter(sunRise)) {
         morning.classList.remove("bignight");
         morning.classList.add("bigday");
+        weekday.classList.remove("night");
+        weekday.classList.add("day");
     } else {
         morning.classList.remove("bigday");
         morning.classList.add("bignight");
+        weekday.classList.add("night");
+        weekday.classList.remove("day");
+
     }
     const uvIndicator = document.querySelector(".UV-index");
     if (data.current.uvi <= 2) {
         uvIndicator.classList.add(".low")
         uvIndicator.classList.remove(".medium")
         uvIndicator.classList.remove(".high")
-        
-    } else if ( data.current.uvi > 2 && data.current.uvi < 5) {
+
+    } else if (data.current.uvi > 2 && data.current.uvi < 5) {
         uvIndicator.classList.add(".medium")
-        uvIndicator.classList .remove(".low")
+        uvIndicator.classList.remove(".low")
         uvIndicator.classList.remove(".high")
-        
-    }else if (data.current.uvi > 7) {
+
+    } else if (data.current.uvi > 7) {
         uvIndicator.classList.add(".high")
         uvIndicator.classList.remove(".low")
         uvIndicator.classList.remove(".medium")
     }
-    
+
     setDailyWeatherData(data, place)
 }
 
@@ -129,19 +135,19 @@ function setDailyWeatherData(data, place) {
     tempTue.textContent = `${Math.floor(data.daily[1].temp.max)} F;`
     humTue.textContent = data.daily[1].humidity
     dateWed.textContent = moment.unix(data.daily[2].dt).format('MMMM Do YYYY');
-    tempWed.textContent =`${Math.floor(data.daily[2].temp.max)} F;`
+    tempWed.textContent = `${Math.floor(data.daily[2].temp.max)} F;`
     humWed.textContent = data.daily[2].humidity
     dateThus.textContent = moment.unix(data.daily[3].dt).format('MMMM Do YYYY');
     tempThus.textContent = `${Math.floor(data.daily[3].temp.max)} F;`
     humThus.textContent = data.daily[3].humidity
     dateFri.textContent = moment.unix(data.daily[4].dt).format('MMMM Do YYYY');
-    tempFri.textContent =`${Math.floor(data.daily[4].temp.max)} F;`
+    tempFri.textContent = `${Math.floor(data.daily[4].temp.max)} F;`
     humFri.textContent = data.daily[4].humidity
     let icon = `http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}@2x.png`
     $(".icon").attr("src", icon);
     let iconM = `http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}.png`
     $(".icon-mon").attr("src", iconM);
-     console.log("mon="+iconM);
+    console.log("mon=" + iconM);
     let iconTu = `http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}.png`
     $(".icon-tues").attr("src", iconTu);
     let iconW = `http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}.png`
