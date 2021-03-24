@@ -91,7 +91,7 @@ function setWeatherData(data, place) {
     let currentTime = moment(moment.unix(data.current.dt));
 
     const morning = document.querySelector(".general-info");
-    const weekday = document.querySelector(".weekdays")
+    const weekday = document.querySelector(".weekdays");
     if (currentTime.isBefore(sunSet) && currentTime.isAfter(sunRise)) {
         morning.classList.remove("bignight");
         morning.classList.add("bigday");
