@@ -86,7 +86,7 @@ body {
     display: flex;
     flex-direction: column;
   justify-content: last baseline;
-    color: #ffff;
+  
     flex-basis: 0;
     flex-grow: 1;
     overflow-wrap: normal;
@@ -141,14 +141,14 @@ background-color:rgb(230, 230, 148);
 .detail .title {
     font-size: 1rem;
     flex-grow: 1;
-    color: #ffff;
+    
     font-weight: bold;
 }
 
 .detail .value{
     font-size: 1rem;
     margin-top: 20px;
-    color: #ffff;
+  
     font-weight: bold;
 }
 h2 {
