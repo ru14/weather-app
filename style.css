@@ -86,7 +86,7 @@ body {
     display: flex;
     flex-direction: column;
   justify-content: last baseline;
-    color: #f1f1f1;
+    color: #ffff;
     flex-basis: 0;
     flex-grow: 1;
     overflow-wrap: normal;
@@ -96,41 +96,43 @@ body {
 .day {
     background-image: url("img/day.png");
     background-size: cover;
-    opacity: 0.5;
+    /*opacity: 0.5;*/
+    color: black;
 }
 
 .night {
     background-image: url("img/night.png");
     background-size: cover;
-    
+    color: white;
 }
 
 .bignight {
     background-image: url("img/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg");
     background-size: cover;
-  
+  color: #f1f1f1;
 }
 
 .bigday {
     background-image: url("img/6649503.png");
     background-size: cover;
+    color: black;
 }
-.low:hover{
+.low{
     background-color: green;
 }
-.medium:hover{
+.medium{
 background-color:rgb(230, 230, 148);
 
 }
-.high:hover{
-background-color: red;
+.high{
+    background-color: red;
 }
 .detail-section {
     display: flex;
     justify-content: space-between;
     position: absolute; 
     bottom: 0;
-    color: #f1f1f1; 
+    
     width: 70%;
     padding: 20px; 
    padding-bottom: 30px;
@@ -139,14 +141,14 @@ background-color: red;
 .detail .title {
     font-size: 1rem;
     flex-grow: 1;
-    color: #f1f1f1;
+    color: #ffff;
     font-weight: bold;
 }
 
 .detail .value{
     font-size: 1rem;
     margin-top: 20px;
-    color: #f1f1f1;
+    color: #ffff;
     font-weight: bold;
 }
 h2 {
@@ -155,7 +157,7 @@ h2 {
     font-weight: bold;
 }
 .weekdays{
-    color: #f1f1f1;
+    /* color: #f1f1f1; */
     text-align: center;
 }
 .daytemp{

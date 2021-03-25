@@ -84,41 +84,48 @@ function setWeatherData(data, place) {
     tempEle.textContent = `${Math.floor(data.current.temp)} F / ${Math.floor((data.current.temp - 32) * 5 / 9)} C;`
     humidity.textContent = data.current.humidity;
     wind.textContent = data.current.wind_speed;
-    uVindex.textContent = data.current.uvi
+    uVindex.textContent = Math.floor(data.current.uvi)
     summary.textContent = data.current.weather[0].description
     let sunSet = moment(moment.unix(data.current.sunset));
     let sunRise = moment(moment.unix(data.current.sunrise));
     let currentTime = moment(moment.unix(data.current.dt));
 
     const morning = document.querySelector(".general-info");
-    const weekday = document.querySelector(".weekdays");
     if (currentTime.isBefore(sunSet) && currentTime.isAfter(sunRise)) {
         morning.classList.remove("bignight");
         morning.classList.add("bigday");
-        weekday.classList.remove("night");
-        weekday.classList.add("day");
     } else {
         morning.classList.remove("bigday");
         morning.classList.add("bignight");
-        weekday.classList.add("night");
-        weekday.classList.remove("day");
-
     }
+
+    const weekdays = document.querySelectorAll(".weekdays");
+    weekdays.forEach(weekday => {
+        if (currentTime.isBefore(sunSet) && currentTime.isAfter(sunRise)) {
+            weekday.classList.remove("night");
+            weekday.classList.add("day");
+        } else {
+            weekday.classList.add("night");
+            weekday.classList.remove("day");
+
+        }
+    });
+
     const uvIndicator = document.querySelector(".UV-index");
     if (data.current.uvi <= 2) {
-        uvIndicator.classList.add(".low")
-        uvIndicator.classList.remove(".medium")
-        uvIndicator.classList.remove(".high")
+        uvIndicator.classList.add("low")
+        uvIndicator.classList.remove("medium")
+        uvIndicator.classList.remove("high")
 
     } else if (data.current.uvi > 2 && data.current.uvi < 5) {
-        uvIndicator.classList.add(".medium")
-        uvIndicator.classList.remove(".low")
-        uvIndicator.classList.remove(".high")
+        uvIndicator.classList.add("medium")
+        uvIndicator.classList.remove("low")
+        uvIndicator.classList.remove("high")
 
     } else if (data.current.uvi > 7) {
-        uvIndicator.classList.add(".high")
-        uvIndicator.classList.remove(".low")
-        uvIndicator.classList.remove(".medium")
+        uvIndicator.classList.add("high")
+        uvIndicator.classList.remove("low")
+        uvIndicator.classList.remove("medium")
     }
 
     setDailyWeatherData(data, place)
