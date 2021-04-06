@@ -27,14 +27,22 @@ var initMap = function () {
     });
 }
 
-// document.onload = onPageLoad();
-// function onPageLoad(){
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition((position) => {
-//             console.log("Postion: " + position.coords.latitude + " : " + position.coords.lagitude);
-//         });
-//     }  
-// }
+
+// fetch("https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=taylor%20swift&pageNumber=1&pageSize=10&autoCorrect=true", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "dc9cc54862mshc2bbf572a79e193p15f1a7jsn7345caec464a",
+// 		"x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com"
+// 	}
+// })
+// .then(response => {
+// 	console.log(response);
+// })
+// .catch(err => {
+// 	console.error(err);
+// });
+
+
 
 // to populate the resent search
 for (i = (recentSearches.length - 1); i >= (recentSearches.length - 9); i--) {
