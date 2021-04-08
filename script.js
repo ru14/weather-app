@@ -1,5 +1,8 @@
 const localStorageKey = "weather.searches";
-let recentSearches = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+let recentSearches = JSON.parse(localStorage.getItem(localStorageKey)) || ["Dallas, TX","New York,NY","Los Angeles, CA","Seattle, WA","Chicago, IL",];
+
+
+let latitude, longitude, formatted_address;
 // inintmap to find pooulat search and get long & lat
 var initMap = function () {
     let searchElement = document.getElementById("searchBox");
@@ -9,8 +12,8 @@ var initMap = function () {
         const place = searchBox.getPlaces()[0];
 
         if (place == null) return
-        const latitude = place.geometry.location.lat();
-        const longitude = place.geometry.location.lng();
+        latitude = place.geometry.location.lat();
+        longitude = place.geometry.location.lng();
         const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=f9ca789169d967eac2bc191ca630ca88`
 
         fetch(api)
@@ -20,27 +23,27 @@ var initMap = function () {
             .then(data => {
                 setWeatherData(data, place.formatted_address,);
                 recentSearches.push(place.formatted_address);
+                formatted_address = place.formatted_address;
                 localStorage.setItem(localStorageKey, JSON.stringify(recentSearches));
                 console.log(recentSearches);
                 console.log(data);
-            });
-    });
-}
+
+                fetch(`https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=${formatted_address.replaceAll(", ", "%2c%20").toString()}&pageNumber=1&pageSize=10&autoCorrect=true`, {
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-key": "dc9cc54862mshc2bbf572a79e193p15f1a7jsn7345caec464a",
+                        "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com"
+                    }
+                }).then(response => {
+                    console.log(response);
+                    document.querySelector("body > div.row > main > div > div.imageCity").innerHTML=`<img src=${response.url}></img>`
+                }).catch(error => { console.log(error) })
+            })
+        });
+    }
+          
 
 
-// fetch("https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=taylor%20swift&pageNumber=1&pageSize=10&autoCorrect=true", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "dc9cc54862mshc2bbf572a79e193p15f1a7jsn7345caec464a",
-// 		"x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com"
-// 	}
-// })
-// .then(response => {
-// 	console.log(response);
-// })
-// .catch(err => {
-// 	console.error(err);
-// });
 
 
 
